@@ -43,7 +43,6 @@ with open("insight3.txt", "w") as f:
 if "persons_injured" in df.columns:
     avg_injuries = df["persons_injured"].mean()
     insight4 = f"The average number of injuries per accident is {avg_injuries:.2f}."
-## wdd
 else: 
     insight4 = "persons_injured column not found."
 
