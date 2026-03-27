@@ -2,9 +2,8 @@ import sys
 import subprocess
 import pandas as pd
 
-# =========================
 # Read input file
-# =========================
+
 input_path = sys.argv[1]
 
 df = pd.read_csv(input_path)
