@@ -8,6 +8,7 @@ input_path = sys.argv[1]
 
 df = pd.read_csv(input_path)
 
+# understand the data
 df.info()
 
 # Convert datetime
@@ -16,6 +17,7 @@ df["CRASH_DATETIME"] = pd.to_datetime(
     errors="coerce"
 )
 
+# Extract time features
 df["HOUR"] = df["CRASH_DATETIME"].dt.hour
 df["DAY"] = df["CRASH_DATETIME"].dt.day_name()
 df["MONTH"] = df["CRASH_DATETIME"].dt.month
@@ -48,6 +50,7 @@ df.rename(columns={
     'CRASH_DATETIME': 'crash_datetime',
 }, inplace=True)
 
+# check the structure of the data again
 df.info()
 
 # check the data types and unique values of each column
