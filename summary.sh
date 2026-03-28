@@ -14,6 +14,7 @@ docker cp $CONTAINER_NAME:/app/pipeline/data_preprocessed.csv $DEST_DIR/
 docker cp $CONTAINER_NAME:/app/pipeline/insight1.txt $DEST_DIR/
 docker cp $CONTAINER_NAME:/app/pipeline/insight2.txt $DEST_DIR/
 docker cp $CONTAINER_NAME:/app/pipeline/insight3.txt $DEST_DIR/
+docker cp $CONTAINER_NAME:/app/pipeline/insight4.txt $DEST_DIR/
 
 docker cp $CONTAINER_NAME:/app/pipeline/summary_plot.png $DEST_DIR/
 docker cp $CONTAINER_NAME:/app/pipeline/clusters.txt $DEST_DIR/

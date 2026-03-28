@@ -98,7 +98,7 @@ pd.DataFrame({'Null Values': nulls, 'Ratio (%)': ratio}).T
 
 # Handle nulls
 df['borough'] = df['borough'].cat.add_categories('Unknown').fillna('Unknown')
-df['on_street'] = df['on_street'].fillna('Unknown')
+df['on_street_name'] = df['on_street_name'].fillna('Unknown')
 
 # vehicle_type_1 has many unique values, so we will fill nulls with the most common value (mode) if it exists
 if 'vehicle_type_1' in df.columns and not df['vehicle_type_1'].mode().empty:
@@ -108,8 +108,8 @@ if 'vehicle_type_1' in df.columns and not df['vehicle_type_1'].mode().empty:
 if 'contributing_factor_1' in df.columns and not df['contributing_factor_1'].mode().empty:
     df['contributing_factor_1'] = df['contributing_factor_1'].fillna(df['contributing_factor_1'].mode()[0])
 
-df['vehicle_type_2'] = df['vehicle_type_2'].fillna("Unknown")
-df['contributing_factor_2'] = df['contributing_factor_2'].fillna("Unspecified")
+df['vehicle_type_code2'] = df['vehicle_type_code2'].fillna("Unknown")
+df['contributing_factor_vehicle_2'] = df['contributing_factor_vehicle_2'].fillna("Unspecified")
 
 # Remove duplicates
 df.drop_duplicates(inplace=True)
@@ -140,15 +140,15 @@ def categorize_contributing_factor(reason):
     else:
         return 'Unspecified'
 
-df['vehicle_1_category'] = df['contributing_factor_1'].apply(categorize_contributing_factor)
-df['vehicle_2_category'] = df['contributing_factor_2'].apply(categorize_contributing_factor)
+df['vehicle_1_category'] = df['contributing_factor_vehicle_1'].apply(categorize_contributing_factor)
+df['vehicle_2_category'] = df['contributing_factor_vehicle_2'].apply(categorize_contributing_factor)
 
 df['main_category'] = df['vehicle_1_category'].combine_first(df['vehicle_2_category'])
 
 df_encoded = pd.get_dummies(df, columns=['main_category'])
 
 # Drop original contributing factor columns
-df_encoded.drop(['contributing_factor_1', 'contributing_factor_2'], axis=1, inplace=True)
+df_encoded.drop(['contributing_factor_vehicle_1', 'contributing_factor_vehicle_2'], axis=1, inplace=True)
 
 # Save preprocessed data
 output_path = "data_preprocessed.csv"
