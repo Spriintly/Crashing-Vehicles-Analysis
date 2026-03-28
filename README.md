@@ -29,3 +29,8 @@ To reproduce this project, we used the following commands:
 6. **Summary (`summary.sh`):** Copies all generated files to the host machine's `customer-analytics/results/` folder and stops the container.
 
 ## Sample Outputs
+<img width="1376" height="400" alt="Screenshot 2026-03-28 194100" src="https://github.com/user-attachments/assets/af01ddef-a803-4d5c-a1ab-29b3906d1d2d" />
+
+<img width="1919" height="1020" alt="Screenshot 2026-03-28 194503" src="https://github.com/user-attachments/assets/e32ec8ef-1ef9-4bed-b722-52cf2f753449" />
+
+<img width="1919" height="1023" alt="Screenshot 2026-03-28 194540" src="https://github.com/user-attachments/assets/bb478b63-af12-4f98-b169-27ec92b887ec" />
