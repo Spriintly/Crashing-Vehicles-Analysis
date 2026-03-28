@@ -13,10 +13,14 @@ This project implements an automated Big Data processing pipeline using Docker. 
 To reproduce this project, we used the following commands:
 
 **1. Build the Docker Image:**
-```docker build -t crash-analytics .```
+```
+docker build -t crash-analytics .
+```
 
 **2. Run the Container (Interactive Mode):**
-```docker run -it --name analytics crash-analytics```
+```
+docker run -it --name analytics crash-analytics
+```
 
 *(Note: Once inside the container, the pipeline is triggered by running: `python ingest.py nyc_motor_vehicle_collisions_sample.csv`)*
 
