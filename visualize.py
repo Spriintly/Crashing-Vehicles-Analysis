@@ -49,4 +49,4 @@ plt.close()
 print("summary_plot.png saved")
 
 # Call next script
-subprocess.run(["python", "cluster.py"])
+subprocess.run(["python", "cluster.py", file_path])
