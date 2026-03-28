@@ -28,5 +28,3 @@ with open("clusters.txt", "w") as f:
 
 print("Clusters saved")
 
-# call next script
-subprocess.run(["bash", "summary.sh", "clusters.txt"])
