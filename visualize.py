@@ -10,11 +10,16 @@ df = pd.read_csv(file_path)
 # clean columns
 df.columns = df.columns.str.strip().str.lower()
 
-#Plot 1
-df[['number_of_persons_injured', 'number_of_persons_killed']].hist(figsize=(8,4))
-plt.suptitle('Injured vs Killed Distribution')
 
-#Plot 2
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+
+# Plot 1 
+axes[0].hist(df['number_of_persons_injured'], bins=20, alpha=0.6, label='Injured')
+axes[0].hist(df['number_of_persons_killed'], bins=20, alpha=0.6, label='Killed')
+axes[0].set_title('Injured vs Killed Distribution')
+axes[0].legend()
+
+#  Plot 2 
 selected_cols = [
     'number_of_persons_injured',
     'number_of_persons_killed',
@@ -27,22 +32,19 @@ selected_cols = [
 ]
 
 corr = df[selected_cols].corr()
+sns.heatmap(corr, annot=True, cmap='coolwarm', ax=axes[1])
+axes[1].set_title('Correlation Between Injury & Fatality Metrics')
 
-plt.figure(figsize=(10,8))
-sns.heatmap(corr, annot=True, cmap='coolwarm')
-plt.title('Correlation Between Injury & Fatality Metrics')
-
-#Plot 3 
-plt.figure(figsize=(8,6))
+# Plot 3 
 borough_counts = df['borough'].value_counts()
+sns.barplot(x=borough_counts.index, y=borough_counts.values, ax=axes[2])
 
-sns.barplot(x=borough_counts.index, y=borough_counts.values)
+axes[2].set_title('Number of Collisions per Borough')
+axes[2].set_xlabel('Borough')
+axes[2].set_ylabel('Count')
 
-plt.title('Number of Collisions per Borough')
-plt.xlabel('Borough')
-plt.ylabel('Count')
-
-#Save 
+#  Save 
+plt.tight_layout()
 plt.savefig("summary_plot.png")
 plt.close()
 
