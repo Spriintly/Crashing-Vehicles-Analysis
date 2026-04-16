@@ -40,11 +40,11 @@ with open("insight3.txt", "w") as f:
 
 # Insight 4
 # Average injuries per accident
-if "persons_injured" in df.columns:
-    avg_injuries = df["persons_injured"].mean()
+if "number_of_persons_injured" in df.columns:
+    avg_injuries = df["number_of_persons_injured"].mean()
     insight4 = f"The average number of injuries per accident is {avg_injuries:.2f}."
 else: 
-    insight4 = "persons_injured column not found."
+    insight4 = "number_of_persons_injured column not found."
 
 with open("insight4.txt", "w") as f:
     f.write(insight4)
